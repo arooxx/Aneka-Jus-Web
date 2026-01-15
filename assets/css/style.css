@@ -1,0 +1,1010 @@
+/* =========================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================= */
+:root {
+  --primary: #27ae60;
+  --primary-dark: #219150;
+  --dark: #333;
+  --light: #fff;
+  --bg-grey: #f3f3f3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* =========================================
+   2. NAVBAR
+   ========================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: rgba(255, 255, 255, 0.95);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-cart {
+  position: relative;
+  color: var(--dark);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* Badge Notifikasi (Khusus Navbar) */
+.btn-cart .badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.btn-admin {
+  padding: 8px 25px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-admin:hover {
+  background: var(--primary-dark);
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  padding-top: 60px;
+}
+
+.hero-text {
+  width: 50%;
+  padding: 0 5% 0 8%;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+
+.hero-text span {
+  color: var(--primary);
+}
+
+.hero-text p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.btn-cta {
+  padding: 15px 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+  display: inline-block;
+}
+
+.btn-cta:hover {
+  background: var(--primary-dark);
+}
+
+.hero-image-wrapper {
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   4. MENU & SLIDER
+   ========================================= */
+.menu-section-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 40px 0;
+}
+
+.menu-box {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 1100px;
+  padding: 60px 40px;
+  border-radius: 60px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  border: 5px solid #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: #888;
+  margin-bottom: 40px;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  margin: 30px auto 0 auto;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px;
+  scrollbar-width: none;
+}
+
+.menu-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slider Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Posisi vertikal tetap dibutuhkan */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: -25px;
+}
+.next-btn {
+  right: -25px;
+}
+
+/* Product Card - MENU (Sudah diperbaiki Vertikal) */
+.menu-slider .card {
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #f9f6ee;
+  border-radius: 20px;
+  overflow: hidden;
+
+  /* Layout Vertikal (Gambar atas, Teks bawah) */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+}
+
+.menu-slider .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.menu-slider .card .card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.card-price {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* =========================================
+   5. CONTACT SECTION
+   ========================================= */
+.contact-section-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 100px 0 40px;
+}
+
+.contact-box {
+  background-color: #fdfdfd;
+  width: 90%;
+  max-width: 1000px;
+  padding: 50px;
+  border-radius: 50px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border: 5px solid #fff;
+  text-align: center;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.info-item i {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-size: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.map-container {
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+  background: white;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  background: white;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: var(--primary-dark);
+}
+
+/* =========================================
+   6. CART & CHECKOUT
+   ========================================= */
+.cart-section-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 100px 0;
+}
+
+.cart-box {
+  background-color: white;
+  width: 90%;
+  max-width: 1000px;
+  padding: 40px;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border: 5px solid #fff;
+  text-align: center;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.cart-table th {
+  background: var(--primary);
+  color: white;
+  padding: 15px;
+}
+
+.cart-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.cart-item-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-remove {
+  color: red;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cart-summary {
+  margin-top: 30px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.checkout-form,
+.checkout-action {
+  width: 45%;
+  text-align: left;
+}
+
+.checkout-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.checkout-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+.btn-checkout {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-checkout:hover {
+  background: var(--primary-dark);
+}
+
+#empty-cart-msg {
+  text-align: center;
+  padding: 60px 20px !important;
+}
+
+/* =========================================
+   7. AUTH (LOGIN/REGISTER)
+   ========================================= */
+.auth-body {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.auth-header,
+.auth-footer {
+  text-align: center;
+  padding: 15px;
+}
+
+.auth-header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.auth-footer {
+  background: var(--primary);
+  color: white;
+  margin-top: auto;
+}
+
+.auth-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  width: 900px;
+  height: 500px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form-section {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  outline: none;
+}
+.input-group input:focus {
+  border-color: var(--primary);
+  background: white;
+}
+
+.btn-auth {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.btn-auth:hover {
+  background: var(--primary-dark);
+}
+
+.auth-image-section {
+  flex: 1;
+  background: linear-gradient(to bottom right, #2ecc71, #27ae60);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 40px;
+}
+
+/* =========================================
+   8. ADMIN DASHBOARD
+   ========================================= */
+.dashboard-body {
+  display: flex;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #2e7d32;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Sidebar (Perbaikan Posisi Tengah) */
+.sidebar-header {
+  padding: 40px 20px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.sidebar-header i {
+  font-size: 45px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.sidebar-header span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  margin: 20px 0;
+}
+.sidebar-menu li {
+  padding: 15px 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sidebar-menu li:hover,
+.sidebar-menu li.active {
+  background-color: #1b5e20;
+  border-left: 5px solid #a5d6a7;
+}
+.logout-btn {
+  margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  padding: 20px 30px;
+  width: calc(100% - 250px);
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Cards (DASHBOARD) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.card-icon.green {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: #888;
+  font-weight: 500;
+}
+
+.card-info p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #333;
+}
+
+/* Tables */
+.tables-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.table-container {
+  width: 100%;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.stok-group {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+.admin-table th {
+  background-color: #f3e5f5;
+  padding: 10px 15px;
+  text-align: left;
+}
+.admin-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Badge (Statis di Tabel) */
+.badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  position: static;
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+
+.badge.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.badge.warning {
+  background: #fff3e0;
+  color: #ef6c00;
+  border: 1px solid #ffe0b2;
+}
+
+.badge.danger {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.table-action-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* =========================================
+   9. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hero-container {
+    flex-direction: column-reverse;
+    height: auto;
+    padding-bottom: 50px;
+  }
+  .hero-text {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .hero-image-wrapper {
+    width: 100%;
+    height: 50vh;
+  }
+  .hero-image-wrapper img {
+    border-radius: 0 0 30px 30px;
+  }
+
+  .menu-box {
+    width: 95%;
+    padding: 40px 20px;
+    border-radius: 30px;
+  }
+  .slider-container {
+    padding: 0;
+  }
+  .nav-btn,
+  .prev-btn,
+  .next-btn {
+    display: none;
+  }
+  .menu-slider {
+    padding: 20px 5%;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-box {
+    padding: 30px 20px;
+    width: 95%;
+  }
+
+  .cart-summary {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .checkout-form,
+  .checkout-action {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .auth-card {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+  .auth-image-section {
+    order: -1;
+    padding: 30px;
+  }
+
+  /* Admin Responsive */
+  .sidebar {
+    width: 70px;
+  }
+  .sidebar span {
+    display: none;
+  }
+  .main-content {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+  .tables-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   TAMBAHAN: INFO PEMBAYARAN DI CART
+   ========================================= */
+.payment-note {
+  margin-top: 20px;
+  background-color: #f1f8e9; /* Hijau sangat muda */
+  border: 1px dashed var(--primary); /* Garis putus-putus hijau */
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.payment-note h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pay-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 5px;
+}
+
+.pay-item:last-child {
+  border-bottom: none;
+}
+
+.pay-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.pay-number {
+  font-weight: bold;
+  color: var(--dark);
+  font-family: monospace; /* Agar angka terlihat tegas */
+  font-size: 15px;
+}
+
+.pay-alert {
+  font-size: 11px;
+  color: #d32f2f; /* Merah bata */
+  font-style: italic;
+  margin-top: 8px;
+}
