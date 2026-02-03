@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Admin - Aneka Jus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="auth-body">
+
+    <header class="auth-header">
+        <div class="logo">
+            <i class="fa-solid fa-glass-water" style="color:#27ae60;"></i>
+            <span>Portal Admin</span>
+        </div>
+    </header>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+
+            <div class="auth-image-section">
+                <div class="overlay-text">
+                    <h3>Selamat Datang!</h3>
+                    <p>Buat akun baru untuk mulai berjualan.</p>
+                </div>
+            </div>
+
+            <div class="auth-form-section">
+                <h2>Register</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="input-group">
+                        <input type="text" id="reg-name" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="reg-username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="reg-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-auth">Daftar</button>
+                </form>
+                <p class="auth-footer-text">
+                    Sudah punya akun? <a href="login.html">Login di sini</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="auth-footer">
+        <p>Copyright © AnekaJus 2025</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

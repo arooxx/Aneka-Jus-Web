@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Aneka Jus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .sidebar-header i {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header span {
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-glass-water"></i>
+            <span>Admin</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active" onclick="showSection('dashboard')">
+                <i class="fa-solid fa-gauge"></i> Dashboard
+            </li>
+            <li onclick="showSection('menu')">
+                <i class="fa-solid fa-utensils"></i> Daftar Menu
+            </li>
+            <li onclick="showSection('penjualan')">
+                <i class="fa-solid fa-chart-line"></i> Penjualan
+            </li>
+            <li onclick="showSection('stok')">
+                <i class="fa-solid fa-boxes-stacked"></i> Stok
+            </li>
+            <li onclick="showSection('karyawan')">
+                <i class="fa-solid fa-users"></i> Karyawan
+            </li>
+            <li class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <h2>Dashboard Overview</h2>
+            <div class="user-profile">
+                <span>Hi, Administrator</span>
+                <i class="fa-solid fa-circle-user" style="font-size: 30px; color: #27ae60;"></i>
+            </div>
+        </header>
+
+        <section id="section-dashboard" class="content-section">
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div class="card-info">
+                        <h3>Penjualan Bulan ini</h3>
+                        <p>Rp. 450,000</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-receipt"></i></div>
+                    <div class="card-info">
+                        <h3>Total Pesanan</h3>
+                        <p>120</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="card-info">
+                        <h3>Jumlah Stok</h3>
+                        <p>320</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tables-grid">
+                <div class="table-container">
+                    <h3>Ringkasan Stok</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Item</th>
+                                <th>Kategori</th>
+                                <th>Sisa</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mangga Harum Manis</td>
+                                <td>Buah</td>
+                                <td>5 Kg</td>
+                                <td><span class="badge warning">Menipis</span></td>
+                            </tr>
+                            <tr>
+                                <td>Cup Plastik 16oz</td>
+                                <td>Barang</td>
+                                <td>20 Pcs</td>
+                                <td><span class="badge warning">Menipis</span></td>
+                            </tr>
+                            <tr>
+                                <td>Keju</td>
+                                <td>Bahan</td>
+                                <td>3 Pcs</td>
+                                <td><span class="badge warning">Menipis</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-container">
+                    <h3>Karyawan</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Posisi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Uung Suhanan</td>
+                                <td>Kasir</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-menu" class="content-section" style="display: none;">
+            <div class="table-action-header">
+                <h3>Daftar Menu Jus</h3>
+                <button class="btn-add" onclick="tambahMenu()"><i class="fa-solid fa-plus"></i> Tambah Menu</button>
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Nama Menu</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-menu">
+                    <tr>
+                        <td>Jus Alpukat</td>
+                        <td>Jus Buah</td>
+                        <td>Rp 10.000</td>
+                        <td><span class="badge success">Tersedia</span></td>
+                        <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jus Mangga</td>
+                        <td>Jus Buah</td>
+                        <td>Rp 10.000</td>
+                        <td><span class="badge success">Tersedia</span></td>
+                        <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="section-penjualan" class="content-section" style="display: none;">
+            <h2>Detail Penjualan</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tanggal</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#ORD-01</td>
+                        <td>15 Jan</td>
+                        <td>Rp 20.000</td>
+                        <td><span class="badge success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-02</td>
+                        <td>16 Jan</td>
+                        <td>Rp 40.000</td>
+                        <td><span class="badge success">Selesai</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="section-stok" class="content-section" style="display: none;">
+
+            <div class="stok-group">
+                <div class="table-action-header">
+                    <h3>Stok Buah Segar</h3>
+                    <button class="btn-add" onclick="tambahStok('Buah')"><i class="fa-solid fa-plus"></i> Tambah
+                        Buah</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Buah</th>
+                            <th>Jumlah (Kg)</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-buah">
+                        <tr>
+                            <td>Alpukat</td>
+                            <td>8 Kg</td>
+                            <td><span class="badge success">Aman</span></td>
+                            <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                        </tr>
+                        <tr>
+                            <td>Mangga Harum Manis</td>
+                            <td>2 Kg</td>
+                            <td><span class="badge warning">Menipis</span></td>
+                            <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stok-group">
+                <div class="table-action-header">
+                    <h3>Stok Bahan Baku</h3>
+                    <button class="btn-add" onclick="tambahStok('Bahan')"><i class="fa-solid fa-plus"></i> Tambah
+                        Bahan</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Bahan</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-bahan">
+                        <tr>
+                            <td>Susu Kental Manis</td>
+                            <td>4 Kaleng</td>
+                            <td><span class="badge warning">Menipis</span></td>
+                            <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                        </tr>
+                        <tr>
+                            <td>Gula Cair</td>
+                            <td>1 Liter</td>
+                            <td><span class="badge warning">Menipis</span></td>
+                            <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stok-group">
+                <div class="table-action-header">
+                    <h3>Stok Barang & Perlengkapan</h3>
+                    <button class="btn-add" onclick="tambahStok('Barang')"><i class="fa-solid fa-plus"></i> Tambah
+                        Barang</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Barang</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-barang">
+                        <tr>
+                            <td>Cup 16oz</td>
+                            <td>100 Pcs</td>
+                            <td><span class="badge success">Aman</span></td>
+                            <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sedotan Plastik</td>
+                            <td>0 Pack</td>
+                            <td><span class="badge danger">Habis</span></td>
+                            <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <section id="section-karyawan" class="content-section" style="display: none;">
+            <div class="table-action-header">
+                <h3>Data Karyawan</h3>
+                <button class="btn-add" onclick="tambahKaryawan()"><i class="fa-solid fa-user-plus"></i> Tambah</button>
+            </div>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Posisi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-karyawan">
+                    <tr>
+                        <td>Uung Suhanan</td>
+                        <td>Kasir</td>
+                        <td><button class="btn-del" onclick="hapusBaris(this)">Hapus</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

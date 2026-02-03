@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Aneka Jus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/img/logo.png" alt="Logo" onerror="this.style.display='none'">
+            Aneka Jus
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="contact.html">Kontak</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="cart.html" class="btn-cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge" id="cart-count">0</span>
+            </a>
+            <a href="login.html" class="btn-admin">
+                <i class="fa-solid fa-user-lock"></i> Admin
+            </a>
+        </div>
+    </nav>
+
+    <section class="menu-section-wrapper">
+        <div class="container menu-box">
+
+            <h2 class="section-title">Menu Favorit</h2>
+            <p class="section-subtitle">Geser untuk melihat kesegaran lainnya</p>
+
+            <div class="slider-container">
+                <button class="nav-btn prev-btn" onclick="scrollMenu('left')">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div class="menu-slider" id="product-slider">
+                </div>
+
+                <button class="nav-btn next-btn" onclick="scrollMenu('right')">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+        <p>Copyright © AnekaJus 2025</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Render produk saat halaman dimuat
+        renderMenuSlider();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,656 @@
+/* ===========================
+    GLOBAL VARIABLES & RESET
+   =========================== */
+:root {
+  --primary: #27ae60;
+  --primary-dark: #219150;
+  --dark: #333;
+  --light: #fff;
+  --bg-grey: #f3f3f3;
+  --font-main: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+/* Membuat Body menjadi Flex Container agar Footer selalu di bawah */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: var(--light);
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+html {
+  scrollbar-width: none;
+}
+
+/* =========
+    NAVBAR
+   ========= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-cart {
+  position: relative;
+  color: var(--dark);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.btn-cart .badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-admin {
+  padding: 8px 25px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-admin:hover {
+  background: var(--primary-dark);
+}
+
+/* ===========================
+   UTAMA (Wrapper Halaman)
+   =========================== */
+.menu-section-wrapper,
+.contact-section-wrapper,
+.cart-section-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  background-color: #e0e0e0;
+}
+
+/* ==============
+   HERO SECTION 
+   ============== */
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0;
+}
+
+.hero-text {
+  width: 50%;
+  padding: 0 5% 0 8%;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+
+.hero-text span {
+  color: var(--primary);
+}
+
+.btn-cta {
+  padding: 15px 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* BAGIAN KANAN (GAMBAR) */
+.hero-image-wrapper {
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  display: block;
+}
+
+/* ================
+    MENU & SLIDER
+   ================*/
+.menu-box,
+.contact-box,
+.cart-box {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 1100px;
+  padding: 40px;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  border: 5px solid #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.section-subtitle {
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.menu-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 5px;
+  scrollbar-width: none;
+}
+.menu-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+}
+.prev-btn {
+  left: -10px;
+}
+.next-btn {
+  right: -10px;
+}
+
+/* CARD PRODUK */
+.menu-slider .card {
+  min-width: 260px;
+  max-width: 260px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #f9f6ee;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.menu-slider .card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.menu-slider .card .card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-add:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ========================
+    CONTACT & CART STYLES
+   ======================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.info-item i {
+  width: 40px;
+  height: 40px;
+  background: #eee;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* KERANJANG */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.cart-table th {
+  background: var(--primary);
+  color: white;
+  padding: 12px;
+}
+.cart-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cart-item-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.cart-summary {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+.checkout-form,
+.checkout-action {
+  width: 48%;
+  text-align: left;
+}
+.checkout-action {
+  text-align: right;
+}
+
+.payment-note {
+  margin-top: 15px;
+  background: #e8f5e9;
+  border: 1px dashed var(--primary);
+  padding: 15px;
+  border-radius: 10px;
+}
+.pay-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.pay-number {
+  font-weight: bold;
+  font-family: monospace;
+}
+.pay-alert {
+  font-size: 11px;
+  color: #d32f2f;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.btn-checkout {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* =========================================
+    AUTH & ADMIN (Login/Register/Dashboard)
+   ========================================= */
+.auth-body {
+  background: #f4f4f4;
+}
+.auth-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+.auth-card {
+  display: flex;
+  width: 800px;
+  height: 450px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.auth-form-section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.auth-form-section form {
+  width: 100%;
+  max-width: 350px;
+}
+.auth-image-section {
+  flex: 1;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+.input-group {
+  margin-bottom: 15px;
+}
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.btn-auth {
+  width: 100%;
+  padding: 10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ===========================
+   ADMIN DASHBOARD STYLES 
+   =========================== */
+.dashboard-body {
+  background: #f4f6f9;
+  display: block;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #2e7d32;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-header {
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebar-menu li {
+  padding: 15px 25px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sidebar-menu li:hover,
+.sidebar-menu li.active {
+  background: #1b5e20;
+}
+
+/* Konten Utama */
+.main-content {
+  margin-left: 250px;
+  padding: 30px;
+}
+
+/* --- Header Atas (Administrator) --- */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Dashboard Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 35px;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.card-icon.green {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* --- Header Tabel (Judul & Tombol Tambah) --- */
+.table-action-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.table-action-header h3 {
+  font-size: 20px;
+  color: var(--dark);
+}
+
+/* Dashboard Tables */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.admin-table th,
+.admin-table td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+}
+.badge.success {
+  background: #2e7d32;
+}
+.badge.warning {
+  background: #ef6c00;
+}
+.badge.danger {
+  background: #c62828;
+}
+
+/* =========
+    FOOTER 
+   ========= */
+.main-footer,
+.auth-footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  margin-top: auto;
+  font-size: 14px;
+}
